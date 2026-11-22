@@ -14,12 +14,12 @@ print(f"19-bit step on 1 m arm = {1.0 * res_rad * 1e6:.2f} micrometres")
 
 # ---- Part B: see what an encoder does to the angle ----
 bits = 6                               # tiny encoder so you can SEE the steps
-step = 360 / 2**bits                   # 22.5 degrees per step
+step = 360 / 2**bits                   # 5.625 degrees per step
 true_angle = np.linspace(0, 360, 1000) # the real shaft angle, smooth
 reading = np.around(true_angle / step) * step   # encoder can only report whole steps
 
 plt.plot(true_angle, true_angle, label="true angle")
-plt.plot(true_angle, reading, label="4-bit encoder reading")
+plt.plot(true_angle, reading, label=f"{bits}-bit encoder reading")
 plt.xlabel("True shaft angle [deg]")
 plt.ylabel("Angle [deg]")
 plt.legend()
