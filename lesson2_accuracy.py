@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # ---- the mechanical setup ----
 e = 10e-6        # eccentricity: disc is 10 micrometres off-centre [m]
-R = 0.04         # sensor reads the disc at 20 mm radius [m]
+R = 0.02         # sensor reads the disc at 20 mm radius [m]
 
 # ---- error amplitude by formula ----
 amp_rad = e / R                          # angle error in radians
