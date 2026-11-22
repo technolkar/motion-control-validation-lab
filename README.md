@@ -100,17 +100,17 @@ If the disc centre is offset by **e** from the shaft axis and the read head sits
 Δθ ≈ e / R   [rad]
 ```
 
-Values used in the script: e = 10 µm, R = 0.04 m.
+Values used in the script: e = 10 µm, R = 0.02 m (20 mm).
 
 | Result | Value |
 |---|---|
-| Error amplitude | 0.00025 rad = **51.6 arcsec** |
-| Compared with the 19-bit step | about **21 ×** larger |
+| Error amplitude | 0.0005 rad = **103.1 arcsec** |
+| Compared with the 19-bit step | about **42 ×** larger |
 
 ![Eccentricity error](results/eccentricity.png)
 
 **Takeaway:** a 10 µm mounting error, far smaller than a human hair, is already about
-21 times bigger than the encoder's resolution. Mechanical mounting dominates accuracy.
+42 times bigger than the encoder's resolution. Mechanical mounting dominates accuracy.
 
 ---
 
@@ -127,7 +127,7 @@ would record over two turns by adding three sources (in arcsec):
 | Misalignment | 30 · sin(2θ + 1.0) | 2 waves per turn |
 | Noise | Gaussian, σ = 5 | random |
 
-(103 arcsec is the e/R amplitude for e = 10 µm at R = 20 mm.)
+(103 arcsec is the eccentricity amplitude from Step 2.)
 
 The number a validation engineer reports first is the **peak-to-peak total error**:
 
@@ -177,7 +177,7 @@ resolution  →  one mechanical error  →  several errors mixed  →  separate 
 | What | Number |
 |---|---|
 | 19-bit resolution | 2.47 arcsec |
-| Eccentricity error (e = 10 µm, R = 40 mm) | 51.6 arcsec amplitude |
+| Eccentricity error (e = 10 µm, R = 20 mm) | 103.1 arcsec amplitude |
 | Total modelled error (2 turns) | 242.4 arcsec peak-to-peak |
 | FFT recovery of H1 / H2 | 102.9 / 29.8 arcsec (inputs 103 / 30) |
 
@@ -191,11 +191,6 @@ resolution  →  one mechanical error  →  several errors mixed  →  separate 
 
 ## Notes and next steps
 
-- `lesson2_accuracy.py`: the comment says the sensor reads at 20 mm radius, but the code
-  uses `R = 0.04` (40 mm). With 20 mm the amplitude would be 103 arcsec, the value used in
-  Steps 3 and 4. To be aligned in the next update.
-- `encoder_basics.py`: the demo uses `bits = 6` (5.625° per step); the plot legend and one
-  comment still say 4-bit / 22.5°. To be aligned in the next update.
 - Next: apply the same analysis to real measured encoder data, and add a fitted error
   correction (subtract the H1/H2 sine waves) to show how much accuracy improves.
 
