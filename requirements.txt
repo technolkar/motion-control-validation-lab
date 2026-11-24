@@ -1,0 +1,4 @@
+# Python packages used by all lesson scripts
+# install with: pip install -r requirements.txt
+numpy
+matplotlib
